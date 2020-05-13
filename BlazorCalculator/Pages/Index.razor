@@ -1,5 +1,6 @@
 ﻿@page "/"
-
+@using BlazorCalculator.Data
+@inject ICalculatorService calculatorService
 <h1>Calculator</h1>
 <hr />
 
@@ -8,28 +9,55 @@
         <form>
             <div class="form-group">
                 <label for="number1">Number 1</label>
-                <input type="text" class="form-control" id="number1" placeholder="Enter number 1">
+                <input type="text" class="form-control" id="number1" placeholder="Enter number 1" @bind="@number1"/>
             </div>
             <div class="form-group">
                 <label for="operator">Operator</label>
-                <select class="form-control" id="operator">
+                <select class="form-control" id="operator" @bind="@op">
                     <option>Choose an operator</option>
                     <option value="+">Sum</option>
-                    <option value="-">Minus</option>
+                    <option value="-">Subtract</option>
                     <option value="*">Multiply</option>
                     <option value="/">Divide</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="number2">Number 2</label>
-                <input type="text" class="form-control" id="number2" placeholder="Enter number 2">
+                <input type="text" class="form-control" id="number2" placeholder="Enter number 2" @bind="@number2"/>
             </div>
-            <button type="submit" class="btn btn-primary">Calculate</button>
+            <button type="button" class="btn btn-primary" @onclick="Calculate">Calculate</button>
             <hr />
             <div class="form-group">
                 <label for="result">Result: </label>
-                <span id="result"></span>
+                <span id="result">@result</span>
             </div>
         </form>
     </div>
 </div>
+
+@code {
+    string op = "";
+    int number1 = 0;
+    int number2 = 0;
+    decimal result = 0;
+    void Calculate()
+    {
+        //TODO: add the actual calculations (use ICalculatorService)
+        
+        switch (op)
+        {
+            case "+":
+                result = calculatorService.Add(number1, number2);
+                break;
+            case "-":
+                result = calculatorService.Subtract(number1, number2);
+                break;
+            case "*":
+                result = calculatorService.Multiply(number1, number2);
+                break;
+            case "/":
+                result = calculatorService.Divide(number1, number2);
+                break;
+        }
+    }
+}
