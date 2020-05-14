@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorCalculator.Data
 {
@@ -27,7 +24,7 @@ namespace BlazorCalculator.Data
             if (value2 == 0)
             {
                 throw new InvalidOperationException(
-                    "Argument cannot be zero.");
+                    "Divisor cannot be zero.");
             }
 
             return value1 / value2;

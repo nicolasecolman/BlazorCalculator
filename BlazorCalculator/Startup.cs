@@ -28,7 +28,6 @@ namespace BlazorCalculator
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<ICalculatorService, CalculatorService>();
         }
 
