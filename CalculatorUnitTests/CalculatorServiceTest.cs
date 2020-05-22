@@ -27,6 +27,15 @@ namespace CalculatorUnitTests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
+        public void AddOverflowException()
+        {
+            var number1 = int.MaxValue;
+            var number2 = 1;
+            var actual = sut.Add(number1, number2);
+        }
+
 
         [TestMethod]
         public void Subtract()
