@@ -26,8 +26,7 @@ namespace BlazorCalculator.Data
         {
             if (value2 == 0)
             {
-                throw new InvalidOperationException(
-                    "Divisor cannot be zero.");
+                throw new DivideByZeroException("Divider cannot be zero.");
             }
 
             return value1 / value2;
