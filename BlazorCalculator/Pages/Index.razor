@@ -72,7 +72,12 @@
                     result = calculatorService.Divide(number1, number2);
                     break;
             }
-        }catch(Exception ex)
+        }
+        catch(OverflowException ex)
+        {
+            errors = $"One or more values exceed their capacity({ex.Message}).";
+        }
+        catch(Exception ex)
         {
             errors = ex.Message;
         }
